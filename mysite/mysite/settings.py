@@ -121,3 +121,5 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 LOGIN_REDIRECT_URL = 'myapp:index' #Post successful login it will redirect to the home page
+
+LOGIN_URL = 'login'
