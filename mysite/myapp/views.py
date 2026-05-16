@@ -36,7 +36,7 @@ def create_item(request):
     context = {
         'form': form
     }
-    return render(request,'myapp/item-form.htm  l',context)
+    return render(request,'myapp/item-form.html',context)
 
 def update_item(request,id):
     item = Item.objects.get(id=id)
