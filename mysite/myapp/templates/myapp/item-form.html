@@ -1,0 +1,6 @@
+<form method="POST">
+    {% csrf_token %}  <!--Cross site forgery token-->
+    {{form}}
+    <button type="submit">Save</button>
+</form>
+

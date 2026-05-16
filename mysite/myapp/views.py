@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from myapp.models import Item
 from .forms import ItemForm
@@ -27,5 +27,13 @@ def detail(request,id):
     # return HttpResponse(f'This is the detail view for item {item}')
 
 def create_item(request):
-    form = ItemForm()
-    return render(request,'myapp/item-form.html')
+    form = ItemForm(request.POST or None)
+    if request.method == 'POST':
+        form = ItemForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('myapp:index')
+    context = {
+        'form': form
+    }
+    return render(request,'myapp/item-form.html',context)
